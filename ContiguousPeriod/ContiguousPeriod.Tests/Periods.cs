@@ -4,17 +4,23 @@ using System.Linq;
 
 namespace ContiguousPeriod.Tests
 {
-    public class PeriodCalculator
+    public class Periods
     {
-        public IEnumerable<Period> CalculateContiguousPeriods(IEnumerable<Period> source)
+        private readonly IEnumerable<Period> periods;
+
+        public Periods(IEnumerable<Period> periods)
+        {
+            this.periods = periods;
+        }
+        public IEnumerable<Period> CalculateContiguousPeriods()
         {
             var contiguousPeriods = new List<Period>();
-            foreach (var period in source.Where(p => p.Value == 0))
+            foreach (var period in periods.Where(p => p.Value == 0))
             {
                 UpdateEndDate(contiguousPeriods, period);
             }
 
-            contiguousPeriods.AddRange(source.Where(p => p.Value != 0));
+            contiguousPeriods.AddRange(periods.Where(p => p.Value != 0));
             return contiguousPeriods.OrderBy(p => p.Start);
         }
 

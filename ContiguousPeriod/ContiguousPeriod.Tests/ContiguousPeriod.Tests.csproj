@@ -53,9 +53,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PeriodCalculatorTest.cs" />
+    <Compile Include="PeriodsTest.cs" />
     <Compile Include="Period.cs" />
-    <Compile Include="PeriodCalculator.cs" />
+    <Compile Include="Periods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

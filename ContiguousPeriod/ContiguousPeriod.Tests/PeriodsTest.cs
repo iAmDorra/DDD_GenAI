@@ -7,7 +7,7 @@ using System.Linq;
 namespace ContiguousPeriod.Tests
 {
     [TestClass]
-    public class PeriodCalculatorTest
+    public class PeriodsTest
     {
         [TestMethod]
         public void Should_return_the_same_period_when_having_only_one()
@@ -15,8 +15,8 @@ namespace ContiguousPeriod.Tests
             var input = new List<Period>();
             input.Add(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input);
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods();
 
             Check.That(output.First()).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
         }
@@ -28,8 +28,8 @@ namespace ContiguousPeriod.Tests
             input.Add(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 0));
             input.Add(new Period(new DateTime(2018, 02, 01), new DateTime(2018, 02, 28), 0));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input);
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods();
 
             Check.That(output.First()).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 02, 28), 0));
         }
@@ -42,8 +42,8 @@ namespace ContiguousPeriod.Tests
             input.Add(new Period(new DateTime(2018, 02, 01), new DateTime(2018, 02, 28), 0));
             input.Add(new Period(new DateTime(2018, 03, 01), new DateTime(2018, 03, 31), 0));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input).ToList();
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods().ToList();
 
             Period firstOutput = output[0];
             Check.That(firstOutput).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
@@ -61,8 +61,8 @@ namespace ContiguousPeriod.Tests
             input.Add(new Period(new DateTime(2018, 03, 01), new DateTime(2018, 03, 31), 0));
             input.Add(new Period(new DateTime(2018, 04, 01), new DateTime(2018, 04, 30), 20));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input).ToList();
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods().ToList();
 
             Period firstOutput = output[0];
             Check.That(firstOutput).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
@@ -84,8 +84,8 @@ namespace ContiguousPeriod.Tests
             input.Add(new Period(new DateTime(2018, 04, 01), new DateTime(2018, 04, 30), 20));
             input.Add(new Period(new DateTime(2018, 05, 01), new DateTime(2018, 05, 31), 0));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input).ToList();
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods().ToList();
 
             Period firstOutput = output[0];
             Check.That(firstOutput).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
@@ -111,8 +111,8 @@ namespace ContiguousPeriod.Tests
             input.Add(new Period(new DateTime(2018, 05, 01), new DateTime(2018, 05, 31), 0));
             input.Add(new Period(new DateTime(2018, 06, 01), new DateTime(2018, 06, 30), 0));
 
-            var calculator = new PeriodCalculator();
-            var output = calculator.CalculateContiguousPeriods(input).ToList();
+            var calculator = new Periods(input);
+            var output = calculator.CalculateContiguousPeriods().ToList();
 
             Period firstOutput = output[0];
             Check.That(firstOutput).IsEqualTo(new Period(new DateTime(2018, 01, 01), new DateTime(2018, 01, 31), 10));
